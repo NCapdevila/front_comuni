@@ -1,0 +1,131 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f6f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.dashboard-container {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 720px;
+  text-align: center;
+}
+
+.dashboard-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  outline: none;
+}
+
+.folder-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+  gap: 1.2rem;
+  justify-items: center;
+  max-height: 250px; /* Altura máxima visible */
+  overflow-y: auto; /* Scroll vertical */
+  padding-right: 0.5rem;
+}
+
+
+.folder-item {
+  background-color: #f0f4ff;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  color: #1a2a6c;
+  font-weight: 600;
+  transition: transform 0.2s, background-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.folder-item:hover {
+  background-color: #e0eaff;
+  transform: scale(1.05);
+}
+
+.folder-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.folder-grid::-webkit-scrollbar {
+  width: 6px;
+}
+.folder-grid::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.folder-grid::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+.folder-grid::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.folder-name {
+  max-width: 9ch; /* Máximo 9 caracteres de ancho */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  font-weight: 500;
+}
+.folder-card {
+  width: 100px;
+  height: 100px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+.folder-card:hover {
+  transform: scale(1.05);
+}
+
+
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border-left-color: #007bff;
+  animation: spin 1s ease infinite;
+  margin: 40px auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
