@@ -5,9 +5,11 @@ import VistaImagenes from './components/VistaImagenes';
 function App() {
   const [carpetas, setCarpetas] = useState([]);
   const [busqueda, setBusqueda] = useState('');
+  const [cargando, setCargando] = useState(false)
   const [carpetaSeleccionada, setCarpetaSeleccionada] = useState(null);
 
   useEffect(() => {
+    setCargando(true)
     fetch('https://api.cebrokers.com.ar/carpetas')
       .then(res => res.json())
       .then(data => {
@@ -15,7 +17,9 @@ function App() {
           setCarpetas(data.carpetas);
         }
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setCargando(false))
+      
   }, []);
 
   const carpetasFiltradas = carpetas.filter(nombre =>
@@ -43,6 +47,7 @@ function App() {
         value={busqueda}
         onChange={(e) => setBusqueda(e.target.value)}
       />
+      {cargando && <div className="spinner" />}
       <div className="folder-grid">
         {carpetasFiltradas.map((nombre) => (
           <div
