@@ -39,7 +39,7 @@ function App() {
   // Mostrar lista de carpetas
   return (
     <div className="dashboard-container">
-      <h1 className="dashboard-title">ComunidAuto 🚗</h1>
+      <h1 className="dashboard-title">ComunidAuto🚗</h1>
       <input
         className="search-input"
         type="text"
