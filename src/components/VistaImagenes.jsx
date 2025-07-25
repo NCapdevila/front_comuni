@@ -51,35 +51,80 @@ function VistaImagenes({ carpeta, onVolver }) {
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      <div className="image-grid">
-  {imagenes.map((archivo, i) => {
-    const url = `https://api.cebrokers.com.ar/uploads/${carpeta}/${archivo}`;
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
+          gap: 20,
+          justifyItems: 'center',
+        }}
+      >
+        {imagenes.map((archivo, i) => {
+          const url = `https://api.cebrokers.com.ar/uploads/${carpeta}/${archivo}`;
 
-    if (esImagen(archivo)) {
-      return (
-        <div className="image-card" key={i} onClick={() => abrirModal(i)}>
-          <img src={url} alt={archivo} />
-        </div>
-      );
-    }
+          if (esImagen(archivo)) {
+            return (
+              <div
+                key={i}
+                onClick={() => abrirModal(i)}
+                style={{
+                  border: '1px solid #ddd',
+                  borderRadius: 8,
+                  padding: 10,
+                  boxShadow: '0 2px 8px rgb(0 0 0 / 0.1)',
+                  backgroundColor: 'white',
+                  cursor: 'pointer',
+                  transition: 'transform 0.2s ease',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+              >
+                <img
+                  src={url}
+                  alt={archivo}
+                  style={{ maxWidth: '100%', borderRadius: 6 }}
+                />
+              </div>
+            );
+          }
 
-    if (esPDF(archivo)) {
-      return (
-        <a className="image-card" key={i} href={url} download={archivo}>
-          <img
-            src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
-            alt="PDF Icon"
-            className="pdf-icon"
-          />
-          <span className="pdf-label">{archivo}</span>
-        </a>
-      );
-    }
+          if (esPDF(archivo)) {
+            return (
+              <a
+                key={i}
+                href={url}
+                download={archivo}
+                style={{
+                  border: '1px solid #ddd',
+                  borderRadius: 8,
+                  padding: 10,
+                  boxShadow: '0 2px 8px rgb(0 0 0 / 0.1)',
+                  backgroundColor: 'white',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  textDecoration: 'none',
+                  color: '#333',
+                  transition: 'transform 0.2s ease',
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+              >
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/337/337946.png"
+                  alt="PDF Icon"
+                  style={{ width: 40, marginBottom: 8 }}
+                />
+                <span style={{ fontSize: 14, textAlign: 'center', wordBreak: 'break-word' }}>{archivo}</span>
+              </a>
+            );
+          }
 
-    return null;
-  })}
-</div>
-
+          return null;
+        })}
+      </div>
 
       <button
         onClick={onVolver}
