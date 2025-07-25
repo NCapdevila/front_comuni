@@ -55,7 +55,7 @@ function VistaImagenes({ carpeta, onVolver }) {
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(5, 180px)',
-          gap: 20,
+          gap: 50,
           justifyContent: 'center',
           flexWrap: 'center',
         }}
@@ -87,7 +87,7 @@ function VistaImagenes({ carpeta, onVolver }) {
                   src={url}
                   alt={archivo}
                   style={{ 
-                    maxWidth: '100%',
+                    width: '100%',
                     borderRadius: 6, 
                     height: '100%', 
                     objectFit: 'cover' 
