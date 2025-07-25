@@ -54,9 +54,10 @@ function VistaImagenes({ carpeta, onVolver }) {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
+          gridTemplateColumns: 'repeat(5, 180px)',
           gap: 20,
-          justifyItems: 'center',
+          justifyContent: 'center',
+          flexWrap: 'center',
         }}
       >
         {imagenes.map((archivo, i) => {
@@ -75,6 +76,9 @@ function VistaImagenes({ carpeta, onVolver }) {
                   backgroundColor: 'white',
                   cursor: 'pointer',
                   transition: 'transform 0.2s ease',
+                  width: '180px',
+                  height: '180px',
+                  overflow: 'hidden'
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
                 onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
@@ -82,7 +86,12 @@ function VistaImagenes({ carpeta, onVolver }) {
                 <img
                   src={url}
                   alt={archivo}
-                  style={{ maxWidth: '100%', borderRadius: 6 }}
+                  style={{ 
+                    maxWidth: '100%',
+                    borderRadius: 6, 
+                    height: '100%', 
+                    objectFit: 'cover' 
+                  }}
                 />
               </div>
             );
